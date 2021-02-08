@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
 import { CardList } from './components/card-list/card-list.component';
 import { SearchBox } from './components/search-box/search-box.component';
-
+import Scroll from './Scroll';
 import './App.css';
 
 
-/*adding state with class component...*/ 
+/*adding state with class component...*/
 class Broll extends Component {
   constructor() {
     super();
@@ -15,6 +14,8 @@ class Broll extends Component {
       monsters: [],
       searchField: ''
     };
+    //order of execution...
+    console.log('constructor');
   }
 
   componentDidMount() {
@@ -22,7 +23,9 @@ class Broll extends Component {
       .then(response =>
         response.json())
       .then(users => this.setState({ monsters: users }));
-}
+    // when the state updated from what was fetched...
+    console.log('componentDidMount');
+  }
 
 
   /**Remmember, this render method is already provided 
@@ -33,6 +36,8 @@ class Broll extends Component {
     const filteredMonsters = monsters.filter(monster =>
       monster.name.toLowerCase().includes(searchField.toLocaleLowerCase())
     );
+    // for deveopment...
+    console.log('render');
     return (
       <div className="App">
         <h1> Monsters Rolodex </h1>
@@ -41,11 +46,13 @@ class Broll extends Component {
           placeholder='search monsters'
           handleChange={e =>
             this.setState({ searchField: e.target.value })} />
-
+        <Scroll>
         <CardList monsters={filteredMonsters} />
-        
-    </div>
+        </Scroll>      
+
+      </div>
     );
+
   }
 }
 

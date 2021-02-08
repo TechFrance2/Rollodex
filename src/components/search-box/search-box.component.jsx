@@ -9,3 +9,5 @@ export const SearchBox = ({ placeholder, handleChange }) => (
       onChange = { handleChange}
       />
 );
+
+export default SearchBox;
