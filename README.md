@@ -67,7 +67,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### IBG
 Right now the as of 02/02/2021 the build will not render the placholder of data as this is not secure and will not be rendered in build until the data is replaced with a new GET HTTPS
-I would prefer to use as needed. 
+I would prefer to use as needed |  https://harrismbrad.github.io/Rollodex
 
 ### `yarn build` fails to minify
 
