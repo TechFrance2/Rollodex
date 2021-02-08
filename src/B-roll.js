@@ -4,7 +4,6 @@ import { SearchBox } from './components/search-box/search-box.component';
 import Scroll from './Scroll';
 import './App.css';
 
-
 /*adding state with class component...*/
 class Broll extends Component {
   constructor() {
@@ -47,8 +46,8 @@ class Broll extends Component {
           handleChange={e =>
             this.setState({ searchField: e.target.value })} />
         <Scroll>
-        <CardList monsters={filteredMonsters} />
-        </Scroll>      
+          <CardList monsters={filteredMonsters} />
+        </Scroll>
 
       </div>
     );
