@@ -26,6 +26,7 @@ class Broll extends Component {
       const data = await resp.json();
       console.log(data);
     }
+    fetchUsers();
   }
 
 
