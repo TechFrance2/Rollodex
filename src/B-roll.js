@@ -16,14 +16,16 @@ class Broll extends Component {
     //order of execution...
     console.log('constructor');
   }
-
+  /**Here I'm making this asynchronistic... 
+   * it returns the array
+   * of users to the console even 
+   * though they do not appear to be rendered. */
   componentDidMount() {
-    fetch('http://jsonplaceholder.typicode.com/users')
-      .then(response =>
-        response.json())
-      .then(users => this.setState({ monsters: users }));
-    // when the state updated from what was fetched...
-    console.log('componentDidMount');
+    async function fetchUsers() {
+      const resp = await fetch('http://jsonplaceholder.typicode.com/users')
+      const data = await resp.json();
+      console.log(data);
+    }
   }
 
 
