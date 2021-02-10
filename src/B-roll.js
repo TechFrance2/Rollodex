@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { CardList } from './components/card-list/card-list.component';
-import { SearchBox } from './components/search-box/search-box.component';
-import Scroll from './Scroll';
-import './App.css';
+import React, { Component } from "react";
+import { CardList } from "./components/card-list/card-list.component";
+import { SearchBox } from "./components/search-box/search-box.component";
+import Scroll from "./Scroll";
+import "./App.css";
 
 /*adding state with class component...*/
 class Broll extends Component {
@@ -11,47 +11,44 @@ class Broll extends Component {
 
     this.state = {
       monsters: [],
-      searchField: ''
+      searchField: "",
     };
     //order of execution...
-    console.log('constructor');
+    console.log("constructor");
   }
 
   componentDidMount() {
-    fetch('http://jsonplaceholder.typicode.com/users')
-      .then(response =>
-        response.json())
-      .then(users => this.setState({ monsters: users }));
+    fetch("http://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((users) => this.setState({ monsters: users }));
     // when the state updated from what was fetched...
-    console.log('componentDidMount');
+    console.log("componentDidMount");
   }
 
-
-  /**Remmember, this render method is already provided 
+  /**Remmember, this render method is already provided
    * we just come above it to make the function component */
   render() {
     // Destructuring the state...
     const { monsters, searchField } = this.state;
-    const filteredMonsters = monsters.filter(monster =>
+    const filteredMonsters = monsters.filter((monster) =>
       monster.name.toLowerCase().includes(searchField.toLocaleLowerCase())
     );
     // for deveopment...
-    console.log('render');
+    console.log("render");
     return (
       <div className="App">
         <h1> Monsters Rolodex </h1>
+        <h2>Search if you dare...</h2>
 
         <SearchBox
-          placeholder='search monsters'
-          handleChange={e =>
-            this.setState({ searchField: e.target.value })} />
+          placeholder="search monsters"
+          handleChange={(e) => this.setState({ searchField: e.target.value })}
+        />
         <Scroll>
           <CardList monsters={filteredMonsters} />
         </Scroll>
-
       </div>
     );
-
   }
 }
 
